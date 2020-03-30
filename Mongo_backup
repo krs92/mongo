@@ -1,0 +1,20 @@
+# Use mongodump to backup all databases in a Mongo instance
+# Variables
+
+MONGOHOST="myMongoServer"
+MONGOPORT="27017"
+MONGODUMP="/usr/bin/mongodump"
+BACKUPDIR="/data/backups/"
+TIMESTAMP=`date +%F-%H%M`
+
+#Backup commands
+
+$MONGODUMP -h $MONGOHOST:$MONGOPORT -d StackExchange -u myAdmin -p myPassword --authenticationDatabase admin --gzip --archive=/data/backups/ StackExchange$TIMESTAMP
+
+$MONGODUMP -h $MONGOHOST:$MONGOPORT -d AdventureWorks -u mongoadmin -p myPassword --authenticationDatabase admin --gzip --archive=/data/backups/ AdventureWorks$TIMESTAMP
+
+$MONGODUMP -h $MONGOHOST:$MONGOPORT -d Census -u myAdmin -p myPassword --authenticationDatabase admin --gzip --archive=/data/backups/ Census$TIMESTAMP
+
+# Begin file cleanup, older than 3 days
+
+find /data/backups -type f -mtime +2 -delete
