@@ -14,7 +14,6 @@ save in .sh file and chmod +x /home/YourDirectory/mongo_backups.sh
 
 we have a cleanup command that will delete backup files older than 3 days
 
-
-# 2. Create MongoDb docker with auth 
+https://medium.com/@krs.sharath03/how-to-take-mongodb-dump-every-day-6e587527525c
 
 
